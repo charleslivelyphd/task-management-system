@@ -1,29 +1,28 @@
-syntax = "proto3";
+syntax = "proto3"; // specify that this is a Protocol Buffers version 3 file
 
-package taskmanagement;
+package taskmanagement; // set the package name for the generated Go code
 
-option go_package = "example.com/task-management-system/proto";
+option go_package = "example.com/task-management-system/proto"; // specify the Go package name for the generated code
 
-service TaskService {
-    rpc AddTask(Task) returns (TaskResponse);
-    rpc GetTasks(TaskRequest) returns (TaskList);
+service TaskService { // define a new gRPC service called TaskService
+    rpc AddTask(Task) returns (TaskResponse); // define a new RPC method called AddTask, which takes a Task message and returns a TaskResponse message
+    rpc GetTasks(TaskRequest) returns (TaskList); // define a new RPC method called GetTasks, which takes a TaskRequest message and returns a TaskList message
 }
 
-message Task {
-    string id = 1;
-    string name = 2;
-    string description = 3;
+message Task { // define a new message type called Task
+    string id = 1; // define a string field called id with tag 1
+    string name = 2; // define a string field called name with tag 2
+    string description = 3; // define a string field called description with tag 3
 }
 
-message TaskResponse {
-    string message = 1;
+message TaskResponse { // define a new message type called TaskResponse
+    string message = 1; // define a string field called message with tag 1
 }
 
-message TaskRequest {
-    int32 limit = 1;
+message TaskRequest { // define a new message type called TaskRequest
+    int32 limit = 1; // define an integer field called limit with tag 1
 }
 
-message TaskList {
-    repeated Task tasks = 1;
+message TaskList { // define a new message type called TaskList
+    repeated Task tasks = 1; // define a repeated field called tasks, which is a slice of Task messages with tag 1
 }
-
